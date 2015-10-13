@@ -281,7 +281,7 @@ div.oembedall-container {
 }
 
 .oembedall-stoqembed .oembedall-statsarrow {
-    background-image: url("http://cdn.sstatic.net/stackoverflow/img/sprites.png?v=3");
+    background-image: url("//cdn.sstatic.net/stackoverflow/img/sprites.png?v=3");
     background-repeat: no-repeat;
     overflow: hidden;
     background-position: 0 -435px;
