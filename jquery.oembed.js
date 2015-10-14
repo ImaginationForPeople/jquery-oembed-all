@@ -160,8 +160,8 @@
                 console.log("default onEmbedFailed called with", arguments);
             }
         },
-        onError: function (a, b, c, d) {
-            console.log('err:', a, b, c, d);
+        onError: function (a, b, c, d, e) {
+            console.log('err:', a, b, c, d, e);
         },
         ajaxOptions: {},
         longUrlAjaxOptions: {}
@@ -398,7 +398,7 @@
                         oembedData = {url: requestUrl};
                     if(typeFragments) {
                         type = typeFragments[0];
-                        subtype = typeFragments[0];
+                        subtype = typeFragments[1];
                     }
                     switch (type) {
                         case "image":
@@ -416,7 +416,7 @@
                     success(oembedData, externalUrl, container);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    settings.onError.call(container, externalUrl, embedProvider, textStatus);
+                    settings.onError.call(container, externalUrl, embedProvider, textStatus, jqXHR);
                     errorCb.call(container, externalUrl, embedProvider, textStatus);
                 }
             }, settings.ajaxOptions || {});
@@ -448,7 +448,7 @@
                     success(oembedData, externalUrl, container);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    settings.onError.call(container, externalUrl, embedProvider, textStatus);
+                    settings.onError.call(container, externalUrl, embedProvider, textStatus, jqXHR);
                     errorCb.call(container, externalUrl, embedProvider, textStatus);
                 }
             }, settings.ajaxOptions || {});
