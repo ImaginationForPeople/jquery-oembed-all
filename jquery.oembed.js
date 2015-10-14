@@ -163,6 +163,12 @@
         onError: function (a, b, c, d, e) {
             console.log('err:', a, b, c, d, e);
         },
+        proxyHeadCall: function(url) {
+            // Many browsers now reject cross-site HTTP HEAD requests.
+            // If you have a function that can transform the URL into a proxied
+            // call, provide it here.
+            return url;
+        },
         ajaxOptions: {},
         longUrlAjaxOptions: {}
     };
@@ -386,9 +392,10 @@
             if(settings.debug) {
                 console.log("embedCode() embeding based on mimetype for ", embedProvider);
             }
-            var requestUrl = getRequestUrl(embedProvider, externalUrl);
+            var requestUrl = getRequestUrl(embedProvider, externalUrl),
+                proxiedRequestUrl = settings.proxyHeadCall(requestUrl);
             ajaxopts = $.extend({
-                url: requestUrl,
+                url: proxiedRequestUrl,
                 type: 'HEAD',
                 success: function (data, textStatus, jqXHR) {
                     var mimeType = jqXHR.getResponseHeader('content-type'),
