@@ -107,7 +107,7 @@
                             },
                             error: function () {
                                 settings.onError.call(container, resourceURL, undefined, "Unable to expand url");
-                                settings.onEmbedFailed.call(container, externalUrl, undefined, "Unable to expand url");
+                                settings.onEmbedFailed.call(container, resourceURL, undefined, "Unable to expand url");
                             }
                         }, settings.longUrlAjaxOptions || settings.ajaxOptions || {});
 
