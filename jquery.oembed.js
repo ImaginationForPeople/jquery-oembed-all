@@ -410,7 +410,9 @@
                     switch (type) {
                         case "image":
                             oembedData.type = 'photo';
-                            console.log(oembedData);
+                            if (settings.debug){
+                                console.log(oembedData);
+                            }
                             oembedData.code = $.fn.oembed.getPhotoCode(externalUrl, oembedData);
                             break;
                         default:
